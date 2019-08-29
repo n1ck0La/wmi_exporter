@@ -23,12 +23,11 @@ after_test:
   - make lint
 
 build_script:
+  - ps: gitversion /output json /showvariable FullSemVer | Set-Content VERSION -PassThru
+  - make crossbuild
   - ps: |
-      $ErrorActionPreference = "Stop"
-      gitversion /output json /showvariable FullSemVer | Set-Content VERSION -PassThru
-      $Version = Get-Content VERSION
-      make crossbuild
       # GH requires all files to have different names, so add version/arch to differentiate
+      $Version = Get-Content VERSION
       foreach($Arch in "amd64","386") {
         Rename-Item output\$Arch\wmi_exporter.exe -NewName wmi_exporter-$Version-$Arch.exe
       }
