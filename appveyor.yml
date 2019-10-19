@@ -1,21 +1,19 @@
 version: "{build}"
 
-os: Visual Studio 2017
 build: off
 stack: go 1.13
 
-environment:
-  GOPATH: c:\gopath
-  GO111MODULE: on
-
-clone_folder: c:\gopath\src\github.com\martinlindhe\wmi_exporter
-
 install:
-  - set PATH=%GOPATH%\bin;%PATH%
-  - set PATH=%PATH%;C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
-  - go get -u github.com/prometheus/promu
-  - go get -u github.com/alecthomas/gometalinter && gometalinter --install
-  - choco install gitversion.portable make -y
+  - set PATH=%PATH%;C:\Temp;C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
+  - ps: |
+      appveyor DownloadFile https://github.com/golangci/golangci-lint/releases/download/v1.21.0/golangci-lint-1.21.0-windows-amd64.zip
+      unzip golangci-lint-1.21.0-windows-amd64.zip
+      Move-Item golangci-lint-1.21.0-windows-amd64/golangci-lint.exe C:\Temp
+
+      appveyor DownloadFile https://github.com/prometheus/promu/releases/download/v0.5.0/promu-0.5.0.windows-amd64.tar.gz
+      7z x promu-0.5.0.windows-amd64.tar.gz
+      Move-Item promu-0.5.0.windows-amd64/promu.exe C:\Temp
+  - cinst gitversion.portable make
 
 test_script:
   - make test
