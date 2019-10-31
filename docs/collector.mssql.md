@@ -77,8 +77,8 @@ Name | Description | Type | Labels
 `wmi_mssql_availreplica_sends_to_replica` | _Not yet documented_ | counter | `instance`, `replica`
 `wmi_mssql_availreplica_sends_to_transport` | _Not yet documented_ | counter | `instance`, `replica`
 `wmi_mssql_bufman_background_writer_pages` | _Not yet documented_ | counter | `instance`
-`wmi_mssql_bufman_buffer_cache_hit_ratio` | _Not yet documented_ | counter | `instance`
-`wmi_mssql_bufman_checkpoint_pages` | _Not yet documented_ | counter | `instance`
+`wmi_mssql_bufman_buffer_cache_hit_ratio` | Percentage of requested pages found in the buffer cache | counter | `instance`
+`wmi_mssql_bufman_checkpoint_pages` | Number of pages written to disk per second by a checkpoint | counter | `instance`
 `wmi_mssql_bufman_database_pages` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_bufman_extension_allocated_pages` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_bufman_extension_free_pages` | _Not yet documented_ | counter | `instance`
@@ -91,7 +91,7 @@ Name | Description | Type | Labels
 `wmi_mssql_bufman_free_list_stalls` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_bufman_integral_controller_slope` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_bufman_lazywrites` | _Not yet documented_ | counter | `instance`
-`wmi_mssql_bufman_page_life_expectancy_seconds` | _Not yet documented_ | counter | `instance`
+`wmi_mssql_bufman_page_life_expectancy_seconds` | Time a page is expected to spend in the buffer cache, in seconds | counter | `instance`
 `wmi_mssql_bufman_page_lookups` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_bufman_page_reads` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_bufman_page_writes` | _Not yet documented_ | counter | `instance`
@@ -197,7 +197,7 @@ Name | Description | Type | Labels
 `wmi_mssql_locks_lock_timeouts` | _Not yet documented_ | counter | `instance`, `resource`
 `wmi_mssql_locks_lock_timeouts_excluding_NOWAIT` | _Not yet documented_ | counter | `instance`, `resource`
 `wmi_mssql_locks_lock_waits` | _Not yet documented_ | counter | `instance`, `resource`
-`wmi_mssql_locks_lock_wait_seconds` | _Not yet documented_ | counter | `instance`, `resource`
+`wmi_mssql_locks_lock_wait_seconds` | Number of requests causing the calling transaction to wait for a lock, per second | counter | `instance`, `resource`
 `wmi_mssql_locks_deadlocks` | _Not yet documented_ | counter | `instance`, `resource`
 `wmi_mssql_memmgr_connection_memory_bytes` | _Not yet documented_ | counter | `instance`
 `wmi_mssql_memmgr_database_cache_memory_bytes` | _Not yet documented_ | counter | `instance`
